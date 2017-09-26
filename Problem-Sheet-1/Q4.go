@@ -1,31 +1,44 @@
 //Go fundamentals Problemn sheet 1
 //Author: Micheal Curley
-//Adapted from http://www.golangprograms.com/basic-programs/go-program-to-find-factorial-of-a-number.html 
-//Program to find Factorial of number
+//Adapted from https://github.com/chirag04/golang-project_euler/blob/master/p020.go
+//Program to find the sum of the factorial of number
 package main
+//importing fmt package
+import (
 import "fmt"
  
-/* Variable Declaration */
-var factVal int = 1 
-                       
-var i int = 1
-var n int
- 
-/*     function declaration        */
-func factorial(n int) int {   
-    if(n < 0){
-        fmt.Print("Factorial of negative number doesn't exist.")    
-    }else{        
-        for i:=1; i<=n; i++ {
-            factVal *= int(i)  
-        }
-         
-    }    
-    return factVal  /* return from function*/
+//sum of factorial function
+func sumFact(num int) int {
+    //initialise variables
+    sum := 0;
+    //digit array to hold individual values
+    digits := [200] int{};
+    digits[0] = 1;
+    //for loop from 2 up to value user inputs
+    for i := 2; i <= num; i++ {
+        //for loop ranging the length of digit array
+    	for j := 0; j < len(digits); j++ {
+            //multiplying value by previous value to get factorial
+            digits[j] *= i;
+            //
+    		if j > 0 && digits[j - 1] > 9 {
+    			digits[j] += int(digits[j - 1] / 10);
+    			digits[j - 1] %= 10;
+    		}
+    	}
+    }
+    //for loop to add up individual digits
+    for i := 0; i < len(digits); i++ {
+    	sum += digits[i];
+    }
+    return sum;
 }
- 
-func main(){    
-    fmt.Print("Enter a positive integer between 0 - 50 : ")
-    fmt.Scan(&n)   
-    fmt.Print("Factorial is: ",factorial(n))
+
+func main(){
+    var n int
+
+    fmt.Print("Enter an positive integer: \n")
+    fmt.Scanf("%d ",&n)
+
+    fmt.Print("Sum of factorial: \n", sumFact(n))
 }
