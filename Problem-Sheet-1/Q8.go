@@ -35,8 +35,8 @@ func main() {
 	x, y := a[:5], b[:5]
 	fmt.Printf("x: %v, y: %v\n", x, y)
 
+	//join two lists
 	x = append(x, y...)
-	fmt.Printf("x: %v\n", x)
 	//sorting slices
 	sort.Ints(x)
 	//prints sorted list
