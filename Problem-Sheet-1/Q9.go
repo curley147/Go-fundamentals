@@ -8,27 +8,37 @@ import (
 	"fmt"
 	"math"
 )
-//declare constants
+//declare constant
 const DELTA = 0.0000001
-const INITIAL_Z = 100.0
+
 //newton's function
-func Sqrt(x float64) (z float64) {
-    z = INITIAL_Z
+func sqRoot(x float64, z float64) float64{
     //function using newtons method to calculate square root and returns a float64
     step := func() float64 {
     	return z - (z*z - x) / (2 * z)
     }
-    //for loop until absolute value > 0.0000001
+    //for loop iterates with each guess until the difference in the current guess and last is < 0.0000001
     for zz := step(); math.Abs(zz - z) > DELTA
     {
-		//repeats calculation until difference is insignificant
-    	z = zz
-	zz = step()
+		//uses result as next guess and repeats
+        z = zz
+        //call newton equation on zz
+        zz = step()
+        //prints current guess to console
+        fmt.Print("\nCurrent guess: \n", z)
     }
-    return
+    return z
 }
 //main function calling Newtons method and Math method to compare
 func main() {
-	fmt.Println("Newtons method: ", Sqrt(500))
-	fmt.Println("Math.Sqrt method: ", math.Sqrt(500))
+    //declare variables
+    var num, guess float64
+    //ask user for inputs
+    fmt.Print("Please enter the number you want the square root of: ")
+    fmt.Scanf("%f ", &num)
+    fmt.Print("Please enter you're first guess at the square root(i.e starting point in Newton's method): ")
+    fmt.Scanf("%f ", &guess)
+    //prints answer using Newtons method and method from math package to compare
+	fmt.Println("\nNewtons method: ", sqRoot(num, guess))
+	fmt.Println("\nMath.Sqrt method: ", math.Sqrt(num))
 }

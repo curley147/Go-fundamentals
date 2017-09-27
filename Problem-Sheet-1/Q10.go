@@ -1,18 +1,17 @@
 //Go fundamentals Problemn sheet 1
 //Author: Micheal Curley
-//Adapted fromhttps://github.com/golang/example/blob/master/stringutil/reverse.go
+//Adapted from https://coderwall.com/p/fw6miw/reverse-text-in-golang
 //Program to reverse a string
 package main
 import "fmt"
-// Reverse returns its argument string reversed rune-wise left to right.
+
 func Reverse(s string) string {
-	//declare array of runes
-	r := []rune(s)
-	//for going from 0 to end off array and swapping letters two at a time
-	for i, j := 0, len(r)-1; i < len(r)/2; i, j = i+1, j-1 {
-		r[i], r[j] = r[j], r[i]
-	}
-	return string(r)
+	var result string
+	//looping from end of string to element 0 and populating result with characters in each element
+    for i := len(s)-1; i >= 0; i-- {
+        result += string(s[i])
+    }
+    return result 
 }
 
 //main function 
