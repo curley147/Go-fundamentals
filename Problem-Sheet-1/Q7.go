@@ -31,8 +31,8 @@ func isP(s string) string {
  for i := 0; i < mid; i++ {
 	 //checks if first and last letter are the same
   if s[i] != s[last-i] {
-   return "NO. It's not a Palimdrome."
+   return "It's not a Palindrome."
   }
  }
- return "YES! You've entered a Palindrome"
+ return "It's a Palindrome"
 }

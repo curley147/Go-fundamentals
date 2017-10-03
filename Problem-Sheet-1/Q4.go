@@ -4,7 +4,6 @@
 //Program to find the sum of the factorial of number
 package main
 //importing fmt package
-import (
 import "fmt"
  
 //sum of factorial function

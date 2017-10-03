@@ -40,6 +40,7 @@ func main() {
         //ask user for guess
         fmt.Println("Guess a number between 1 and 100.: ")
         fmt.Scanf("%d ", &guess)
+        guessTaken++
         //check if guess is higher or lower than random number
         if guess < myrand {
             fmt.Println("Your guess is too low.")
@@ -51,10 +52,11 @@ func main() {
         //check if guess is in slice
         if contains(guessedNum, guess) == true{
             fmt.Printf("That number has already been entered\n")
+            guessTaken--;
         } else {
             //add guess to slice of guessed numbers
             guessedNum = append(guessedNum, guess)
-            guessTaken++
+            
         }
        
     }

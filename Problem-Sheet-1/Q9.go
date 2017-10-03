@@ -13,6 +13,8 @@ const DELTA = 0.0000001
 
 //newton's function
 func sqRoot(x float64, z float64) float64{
+    //first guess
+    fmt.Print("\nCurrent guess: \n", z)
     //function using newtons method to calculate square root and returns a float64
     step := func() float64 {
     	return z - (z*z - x) / (2 * z)

@@ -34,7 +34,7 @@ func main() {
 	fmt.Println("Please enter number: ")
 	fmt.Scanf("%d ",&x[i])
   }
-  
+  fmt.Println("Min and max elements are: ")
   fmt.Println(MinMax(x))
   
 }
